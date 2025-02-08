@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerberus Cluster Point Calculator</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="title"><h1>Welcome to Cerberus - Know Your Future Now</h1><hr></div>
+    <div class="container">
+        
+        <h2>Cluster Points Calculator</h2><hr style=" width:100%;">
+        <label for="course">Select Your Course:</label>
+        <p id="subjectGuide"></p>
+        <select id="course">
+            <option value="">-- Select Course --</option>
+            <option value="engineering">Engineering</option>
+            <option value="medicine">Medicine</option>
+            <option value="business">Business</option>
+            <option value="law">Law</option>
+            <option value="education">Education</option>
+            <option value="computerScience">Computer Science</option>
+            <option value="diplomaEngineering">Diploma in Engineering</option>
+            <option value="diplomaMedicine">Diploma in Medicine</option>
+            <option value="diplomaBusiness">Diploma in Business</option>
+            <option value="diplomaLaw">Diploma in Law</option>
+            <option value="diplomaEducation">Diploma in Education</option>
+            <option value="diplomaComputerScience">Diploma in Computer Science</option>
+            <option value="businessEconomics">Business & Economics</option>
+            <option value="bcom">Bachelor of Commerce (BCom)</option>
+            <option value="bba">Bachelor of Business Administration (BBA)</option>
+            <option value="economics">Bachelor of Economics</option>
+            <option value="actuarialScience">Bachelor of Actuarial Science</option>
+            <option value="procurement">Bachelor of Procurement and Supply Chain Management</option>
+            <option value="entrepreneurship">Bachelor of Entrepreneurship</option>
+            <option value="civilEngineering">Bachelor of Science in Civil Engineering</option>
+            <option value="electricalEngineering">Bachelor of Science in Electrical and Electronic Engineering</option>
+            <option value="mechanicalEngineering">Bachelor of Science in Mechanical Engineering</option>
+            <option value="mechatronicsEngineering">Bachelor of Science in Mechatronics Engineering</option>
+            <option value="it">Bachelor of Science in Information Technology</option>
+            <option value="mbchb">Bachelor of Medicine and Bachelor of Surgery (MBChB)</option>
+            <option value="nursing">Bachelor of Science in Nursing</option>
+            <option value="pharmacy">Bachelor of Science in Pharmacy</option>
+            <option value="medicalLabScience">Bachelor of Science in Medical Laboratory Science</option>
+            <option value="publicHealth">Bachelor of Science in Public Health</option>
+            <option value="educationArts">Bachelor of Education (Arts)</option>
+            <option value="educationScience">Bachelor of Education (Science)</option>
+            <option value="sociology">Bachelor of Arts in Sociology</option>
+            <option value="psychology">Bachelor of Arts in Psychology</option>
+            <option value="internationalRelations">Bachelor of Arts in International Relations</option>
+            <option value="llb">Bachelor of Laws (LLB)</option>
+            <option value="criminology">Bachelor of Arts in Criminology and Security Studies</option>
+            <option value="politicalScience">Bachelor of Arts in Political Science</option>
+            <option value="philosophy">Bachelor of Arts in Philosophy</option>
+            <option value="religiousStudies">Bachelor of Arts in Religious Studies</option>
+            <option value="environmentalScience">Bachelor of Science in Environmental Science</option>
+            <option value="agriculture">Bachelor of Science in Agriculture</option>
+            <option value="appliedStatistics">Bachelor of Science in Applied Statistics</option>
+            <option value="biotechnology">Bachelor of Science in Biotechnology</option>
+        </select>
+        <label for="mainSubjects">Enter Main Subject Points (X):</label>
+        <input type="number" id="mainSubjects" placeholder="Total points for main subjects">
+        <label for="totalSubjects">Enter Total Subject Points (Y):</label>
+        <input type="number" id="totalSubjects" placeholder="Total points for 8 subjects">
+        <button onclick="calculateClusterPoints()" class="btn">Calculate</button>
+        <div id="result"></div>
+    </div>
+    <script>
+        function calculateClusterPoints() {
+            let X = parseFloat(document.getElementById('mainSubjects').value);
+            let Y = parseFloat(document.getElementById('totalSubjects').value);
+            if (isNaN(X) || isNaN(Y) || X <= 0 || Y <= 0) {
+            document.getElementById('result').innerText = "Please enter valid scores.";
+            return;
+            }
+            let clusterPoints = Math.sqrt((X / 48) * (Y / 84)) * 48;
+            document.getElementById('result').innerText = "Your Cluster Points: " + clusterPoints.toFixed(4);
+        }
+
+        document.getElementById('course').addEventListener('change', function() {
+            let course = this.value;
+            let guide = '';
+
+            switch(course) {
+                case 'engineering':
+                    guide = 'Main subjects for Engineering: Mathematics, Physics, Chemistry, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'medicine':
+                    guide = 'Main subjects for Medicine: Biology, Chemistry, Mathematics/Physics, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'business':
+                    guide = 'Main subjects for Business: Mathematics, Business Studies, Economics, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'law':
+                    guide = 'Main subjects for Law: English/Kiswahili (whichever has higher points), History, Mathematics, Geography';
+                    break;
+                case 'education':
+                    guide = 'Main subjects for Education: Mathematics, English/Kiswahili (whichever has higher points), Biology, Chemistry';
+                    break;
+                case 'computerScience':
+                    guide = 'Main subjects for Computer Science: Mathematics, Physics, Chemistry, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'diplomaEngineering':
+                    guide = 'Main subjects for Diploma in Engineering: Mathematics, Physics, Chemistry, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'diplomaMedicine':
+                    guide = 'Main subjects for Diploma in Medicine: Biology, Chemistry, Mathematics/Physics, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'diplomaBusiness':
+                    guide = 'Main subjects for Diploma in Business: Mathematics, Business Studies, Economics, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'diplomaLaw':
+                    guide = 'Main subjects for Diploma in Law: English/Kiswahili (whichever has higher points), History, Mathematics, Geography';
+                    break;
+                case 'diplomaEducation':
+                    guide = 'Main subjects for Diploma in Education: Mathematics, English/Kiswahili (whichever has higher points), Biology, Chemistry';
+                    break;
+                case 'diplomaComputerScience':
+                    guide = 'Main subjects for Diploma in Computer Science: Mathematics, Physics, Chemistry, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'businessEconomics':
+                    guide = 'Main subjects for Business & Economics: Mathematics, Business Studies, Economics, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'bcom':
+                    guide = 'Main subjects for Bachelor of Commerce (BCom): Mathematics, Business Studies, Economics, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'bba':
+                    guide = 'Main subjects for Bachelor of Business Administration (BBA): Mathematics, Business Studies, Economics, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'economics':
+                    guide = 'Main subjects for Bachelor of Economics: Mathematics, Business Studies, Economics, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'actuarialScience':
+                    guide = 'Main subjects for Bachelor of Actuarial Science: Mathematics, Business Studies, Economics, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'procurement':
+                    guide = 'Main subjects for Bachelor of Procurement and Supply Chain Management: Mathematics, Business Studies, Economics, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'entrepreneurship':
+                    guide = 'Main subjects for Bachelor of Entrepreneurship: Mathematics, Business Studies, Economics, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'civilEngineering':
+                    guide = 'Main subjects for Bachelor of Science in Civil Engineering: Mathematics, Physics, Chemistry, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'electricalEngineering':
+                    guide = 'Main subjects for Bachelor of Science in Electrical and Electronic Engineering: Mathematics, Physics, Chemistry, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'mechanicalEngineering':
+                    guide = 'Main subjects for Bachelor of Science in Mechanical Engineering: Mathematics, Physics, Chemistry, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'mechatronicsEngineering':
+                    guide = 'Main subjects for Bachelor of Science in Mechatronics Engineering: Mathematics, Physics, Chemistry, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'it':
+                    guide = 'Main subjects for Bachelor of Science in Information Technology: Mathematics, Physics, Chemistry, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'mbchb':
+                    guide = 'Main subjects for Bachelor of Medicine and Bachelor of Surgery (MBChB): Biology, Chemistry, Mathematics/Physics, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'nursing':
+                    guide = 'Main subjects for Bachelor of Science in Nursing: Biology, Chemistry, Mathematics/Physics, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'pharmacy':
+                    guide = 'Main subjects for Bachelor of Science in Pharmacy: Biology, Chemistry, Mathematics/Physics, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'medicalLabScience':
+                    guide = 'Main subjects for Bachelor of Science in Medical Laboratory Science: Biology, Chemistry, Mathematics/Physics, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'publicHealth':
+                    guide = 'Main subjects for Bachelor of Science in Public Health: Biology, Chemistry, Mathematics/Physics, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'educationArts':
+                    guide = 'Main subjects for Bachelor of Education (Arts): Mathematics, English/Kiswahili (whichever has higher points), Biology, Chemistry';
+                    break;
+                case 'educationScience':
+                    guide = 'Main subjects for Bachelor of Education (Science): Mathematics, English/Kiswahili (whichever has higher points), Biology, Chemistry';
+                    break;
+                case 'sociology':
+                    guide = 'Main subjects for Bachelor of Arts in Sociology: Mathematics, English/Kiswahili (whichever has higher points), Biology, Chemistry';
+                    break;
+                case 'psychology':
+                    guide = 'Main subjects for Bachelor of Arts in Psychology: Mathematics, English/Kiswahili (whichever has higher points), Biology, Chemistry';
+                    break;
+                case 'internationalRelations':
+                    guide = 'Main subjects for Bachelor of Arts in International Relations: Mathematics, English/Kiswahili (whichever has higher points), Biology, Chemistry';
+                    break;
+                case 'llb':
+                    guide = 'Main subjects for Bachelor of Laws (LLB): English/Kiswahili (whichever has higher points), History, Mathematics, Geography';
+                    break;
+                case 'criminology':
+                    guide = 'Main subjects for Bachelor of Arts in Criminology and Security Studies: English/Kiswahili (whichever has higher points), History, Mathematics, Geography';
+                    break;
+                case 'politicalScience':
+                    guide = 'Main subjects for Bachelor of Arts in Political Science: English/Kiswahili (whichever has higher points), History, Mathematics, Geography';
+                    break;
+                case 'philosophy':
+                    guide = 'Main subjects for Bachelor of Arts in Philosophy: English/Kiswahili (whichever has higher points), History, Mathematics, Geography';
+                    break;
+                case 'religiousStudies':
+                    guide = 'Main subjects for Bachelor of Arts in Religious Studies: English/Kiswahili (whichever has higher points), History, Mathematics, Geography';
+                    break;
+                case 'environmentalScience':
+                    guide = 'Main subjects for Bachelor of Science in Environmental Science: Mathematics, Physics, Chemistry, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'agriculture':
+                    guide = 'Main subjects for Bachelor of Science in Agriculture: Mathematics, Physics, Chemistry, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'appliedStatistics':
+                    guide = 'Main subjects for Bachelor of Science in Applied Statistics: Mathematics, Physics, Chemistry, English/Kiswahili (whichever has higher points)';
+                    break;
+                case 'biotechnology':
+                    guide = 'Main subjects for Bachelor of Science in Biotechnology: Mathematics, Physics, Chemistry, English/Kiswahili (whichever has higher points)';
+                    break;
+                default:
+                    guide = '';
+            }
+
+            document.getElementById('result').innerText = guide;
+        });
+    </script>
+</body>
+</html>
